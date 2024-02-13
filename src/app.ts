@@ -57,6 +57,7 @@ function getBookTitlesByCategory(category: Category) {
     return books.filter(book => book.category === category).map(book => book.title);
 }
 
+/* Property 'category' does not exist on type '{ id: number; title: string; author: string; available: boolean; }' */
 
 ///////////////////////////////////////////////////////////////////////////// task 5
 
