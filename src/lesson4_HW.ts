@@ -12,7 +12,7 @@ interface IBook {
     title: string;
     author: string;
     available: boolean;
-    category: string;
+    category: Category;
     pages?: number;
     markDamaged?: DamageLogger;
 }
