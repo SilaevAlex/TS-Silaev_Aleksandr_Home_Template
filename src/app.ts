@@ -22,13 +22,13 @@ function getAllBooks() {
 console.log(getAllBooks())
 ///////////////////////////////////////////////////////////////////////////  task 2-3
 
-enum Category {
-    JavaScript,
-    CSS,
-    HTML,
-    TypeScript,
-    Angular
-}
+// enum Category {
+//     JavaScript,
+//     CSS,
+//     HTML,
+//     TypeScript,
+//     Angular
+// }
 
 const books = [
     { id: 1, title: 'Refactoring JavaScript', author: 'Evan Burchard', available: true, category: Category.JavaScript },
@@ -52,10 +52,10 @@ logFirstAvailable(books);
 
 ///////////////////////////////////////////////////////////////////////////// task 4
 
-function getBookTitlesByCategory(category: Category) {
-    const books = getAllBooks();
-    return books.filter(book => book.category === category).map(book => book.title);
-}
+// function getBookTitlesByCategory(category: Category) {
+//     const books = getAllBooks();
+//     return books.filter(book => book.category === category).map(book => book.title);
+// }
 
 /* Property 'category' does not exist on type '{ id: number; title: string; author: string; available: boolean; }' */
 
@@ -68,15 +68,15 @@ function getBookTitlesByCategory(category: Category) {
 
 ///////////////////////////////////////////////////////////////////////////// task 6
 
-function getBookAuthorByIndex(index: number): [title: string, author: string] {
-    const books = getAllBooks();
-    const book = books[index];
-    return [book.title, book.author];
-}
+// function getBookAuthorByIndex(index): [title: string, author: string] {
+//     const books = getAllBooks();
+//     const book = books[index];
+//     return [book.title, book.author];
+// }
 
-const bookIndex = 1;
-const [title, author] = getBookAuthorByIndex(bookIndex);
-console.log('Book:', title, ',', 'Author:', author);
+// const bookIndex = 1;
+// const [title, author] = getBookAuthorByIndex(bookIndex);
+// console.log('Book:', title, ',', 'Author:', author);
 
 
 ///////////////////////////////////////////////////////////////////////////// task 7
