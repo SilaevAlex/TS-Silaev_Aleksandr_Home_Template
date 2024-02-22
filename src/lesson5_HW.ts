@@ -26,8 +26,8 @@ class Circle extends Shape {
 }
 
 class Rectangle extends Shape {
-    private width: number;
-    private height: number;
+    protected  width: number;
+    protected  height: number;
 
     constructor(color: string, name: string, width: number, height: number) {
         super(color, name);
@@ -45,6 +45,7 @@ class Rectangle extends Shape {
 }
 
 class Square extends Rectangle {
+
     constructor(color: string, name: string, sideLength: number) {
         super(color, name, sideLength, sideLength);
     }
