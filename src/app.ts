@@ -30,24 +30,24 @@ console.log(getAllBooks())
 //     Angular
 // }
 
-const books = [
-    { id: 1, title: 'Refactoring JavaScript', author: 'Evan Burchard', available: true, category: Category.JavaScript },
-    { id: 2, title: 'JavaScript Testing', author: 'Liang Yuxian Eugene', available: false, category: Category.HTML },
-    { id: 3, title: 'CSS Secrets', author: 'Lea Verou', available: true, category: Category.CSS },
-    { id: 4, title: 'Mastering JavaScript Object-Oriented Programming', author: 'Andrea Chiarelli', available: true, category: Category.TypeScript }
-];
+// const books = [
+//     { id: 1, title: 'Refactoring JavaScript', author: 'Evan Burchard', available: true, category: Category.JavaScript },
+//     { id: 2, title: 'JavaScript Testing', author: 'Liang Yuxian Eugene', available: false, category: Category.HTML },
+//     { id: 3, title: 'CSS Secrets', author: 'Lea Verou', available: true, category: Category.CSS },
+//     { id: 4, title: 'Mastering JavaScript Object-Oriented Programming', author: 'Andrea Chiarelli', available: true, category: Category.TypeScript }
+// ];
 
-function logFirstAvailable(books: any[]) {
-    console.log('Кількість книг: ' + books.length)
-    const firstAvailableBook = books.find(book => book.available);
-    if (firstAvailableBook) {
-        console.log('Перша доступна книга: ' + firstAvailableBook.title)
-    } else {
-        console.log('Немає книг')
-    }
-}
+// function logFirstAvailable(books: any[]) {
+//     console.log('Кількість книг: ' + books.length)
+//     const firstAvailableBook = books.find(book => book.available);
+//     if (firstAvailableBook) {
+//         console.log('Перша доступна книга: ' + firstAvailableBook.title)
+//     } else {
+//         console.log('Немає книг')
+//     }
+// }
 
-logFirstAvailable(books);
+// logFirstAvailable(books);
 
 
 ///////////////////////////////////////////////////////////////////////////// task 4
