@@ -81,3 +81,48 @@ fetchData((err, data) => {
         console.log('Data:', data);
     }
 });
+
+
+
+// HW - 10
+
+interface Book {
+    id: number;
+    title: string;
+    author: string;
+    available: boolean;
+    category: string; // Assuming Category is a predefined enum or constant
+}
+
+interface Magazine {
+    title: string;
+    publisher: string;
+}
+
+class Shelf {
+    private items: (Book | Magazine)[] = [];
+
+    add(item: Book | Magazine): void {
+        this.items.push(item);
+    }
+
+    getFirst(): Book | Magazine {
+        return this.items[0];
+    }
+
+    printTitles(): void {
+        this.items.forEach(item => {
+            console.log(item.title);
+        });
+    }
+
+    find(identifier: number | string): Book | Magazine | undefined {
+        if (typeof identifier === 'number') {
+            return this.items.find(item => (item as Book).id === identifier);
+        } else if (typeof identifier === 'string') {
+            return this.items.find(item => (item as Book).author === identifier);
+        } else {
+            return undefined;
+        }
+    }
+}
