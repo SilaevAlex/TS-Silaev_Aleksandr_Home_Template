@@ -1,23 +1,80 @@
-type PizzaSize = 'мала' | 'середня' | 'велика';
-type PizzaShape = 'кругла' | 'квадратна' | 'овальна';
-type PizzaTopping = 'сир' | 'шинка' | 'ананаси' | 'гриби' | 'оливки';
+enum PizzaSize {
+  small = 'Мала',
+  medium = 'Середня',
+  large = 'Велика'
+}
+
+enum PizzaShape {
+  round = 'Кругла',
+  square = 'Квадратна',
+  oval = 'Овальна'
+}
+
+enum PizzaIngredient {
+  thin = 'Тісто тонке',
+  lush = 'Тісто пишне',
+  mozzarella = 'Моцарела',
+  cheddar = 'Чеддер',
+  mushrooms = 'Гриби',
+  chicken = 'Курка',
+  tomatoes = 'Помідори',
+  onions = 'Цибуля'
+}
 
 class Pizza {
-  private size: PizzaSize;
-  private shape: PizzaShape;
-  private toppings: PizzaTopping[];
+  private size: string;
+  private shape: string;
+  private toppings: string[];
 
-  constructor(size: PizzaSize, shape: PizzaShape, toppings: PizzaTopping[]) {
-    this.size = size;
-    this.shape = shape;
-    this.toppings = toppings;
+  constructor(size: string, shape: string, toppings: string[]) {
+      this.size = size;
+      this.shape = shape;
+      this.toppings = toppings;
   }
 
-  toString(): string {
-    return `Піца розміру ${this.size}, форми ${this.shape}, з начинками: ${this.toppings.join(', ')}.`;
+  public toString(): string {
+      const sizeString = `Розмір: ${this.size}`;
+      const shapeString = `Форма: ${this.shape}`;
+      const toppingsString = `Інгредієнти: ${this.toppings.join(', ')}`;
+      return `${sizeString}, ${shapeString}, ${toppingsString}`;
   }
 }
 
-const myPizza = new Pizza('велика', 'кругла', ['сир', 'шинка', 'гриби']);
+class PizzaBuilder {
+  private size: PizzaSize = PizzaSize.small;
+  private shape: PizzaShape = PizzaShape.round;
+  private toppings: PizzaIngredient[] = [];
 
-console.log(myPizza.toString());
+  setSize(size: PizzaSize): this {
+      this.size = size;
+      return this;
+  }
+
+  setShape(shape: PizzaShape): this {
+      this.shape = shape;
+      return this;
+  }
+
+  addTopping(ingredient: PizzaIngredient): this {
+      this.toppings.push(ingredient);
+      return this;
+  }
+
+  build(): Pizza {
+      return new Pizza(this.size, this.shape, this.toppings);
+  }
+}
+
+
+const pizzaBuilder = new PizzaBuilder();
+const pizza = pizzaBuilder
+  .setSize(PizzaSize.medium)
+  .setShape(PizzaShape.oval)
+  .addTopping(PizzaIngredient.thin)
+  .addTopping(PizzaIngredient.mozzarella)
+  .addTopping(PizzaIngredient.mushrooms)
+  .addTopping(PizzaIngredient.chicken)
+  .addTopping(PizzaIngredient.onions)
+  .build();
+
+console.log(pizza.toString());
