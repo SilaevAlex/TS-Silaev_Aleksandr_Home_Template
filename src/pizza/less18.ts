@@ -1,16 +1,16 @@
-enum PizzaSize {
+export enum PizzaSize {
   small = 'Мала',
   medium = 'Середня',
   large = 'Велика'
 }
 
-enum PizzaShape {
+export enum PizzaShape {
   round = 'Кругла',
   square = 'Квадратна',
   oval = 'Овальна'
 }
 
-enum PizzaIngredient {
+export enum PizzaIngredient {
   thin = 'Тісто тонке',
   lush = 'Тісто пишне',
   mozzarella = 'Моцарела',
@@ -21,7 +21,7 @@ enum PizzaIngredient {
   onions = 'Цибуля'
 }
 
-class Pizza {
+export class Pizza {
   private size: string;
   private shape: string;
   private toppings: string[];
@@ -40,7 +40,7 @@ class Pizza {
   }
 }
 
-class PizzaBuilder {
+export class PizzaBuilder {
   private size: PizzaSize = PizzaSize.small;
   private shape: PizzaShape = PizzaShape.round;
   private toppings: PizzaIngredient[] = [];
