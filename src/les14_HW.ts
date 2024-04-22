@@ -1,52 +1,56 @@
-function Memoize(descriptor: PropertyDescriptor) {
-    const originalMethod = descriptor.value;
-    const cache = new Map();
+// function Memoize() {
+//     const cache: Record<string, number> = {};
+//     return function <T>(
+//         originalMethod: (value: number) => number,
+//         context: { kind: string },
+//     ) {
+//         if (context.kind !== 'method') throw new Error('Decorator is only for methods');
+//         function replaceWithValue(this: T, value: number): number {
+//             const key = String(value);
+//             if (key in cache) {
+//                 return cache[key];
+//             } else {
+//                 const calculate: number = originalMethod.apply(this, [value]);
+//                 cache[key] = calculate;
+//                 return calculate;
+//             }
+//         }
+//         return replaceWithValue;
+//     };
+// }
 
-    descriptor.value = function (...args: any[]) {
-        const key = JSON.stringify(args);
-        if (!cache.has(key)) {
-            cache.set(key, originalMethod.apply(this, args));
-        }
-        return cache.get(key);
-    };
+// class CachedCalculations {
+//     @Memoize()
+//     double(value: number): number {
+//         return value * 2;
+//     }
+// }
 
-    return descriptor;
-}
+// const memoize = new CachedCalculations();
+// console.log(memoize.double(2));
+// console.log(memoize.double(4));
 
-class MyClass {
-    @Memoize
-    myMethod(arg1: any, arg2: any) {
-        return arg1 + arg2;
-    }
-}
 
-const instance = new MyClass();
-console.log(instance.myMethod(1, 2));
-console.log(instance.myMethod(2, 5));
+// function Debounce(delay: number = 0) {
+//     let timer: ReturnType<typeof setTimeout>;
+//     return function <T>(
+//         originalMethod: (...args: any[]) => void,
+//         context: { kind: string },
+//     ): (...args: any[]) => void {
+//         if (context.kind !== 'method') throw new Error('Decorator is only for methods');
+//         return function(this: T, ...args: any[]): void {
+//             clearTimeout(timer);
+//             timer = setTimeout(() => originalMethod.apply(this, args), delay);
+//         };
+//     };
+// }
 
-function Debounce(delay: number) {
-    return function (descriptor: PropertyDescriptor) {
-        const originalMethod = descriptor.value;
-        let timeoutId: NodeJS.Timeout;
+// class DebouncedActions {
+//     @Debounce(5000)
+//     executeAfterDelay(): void {
+//         console.log('Debounced');
+//     }
+// }
 
-        descriptor.value = function (...args: any[]) {
-            clearTimeout(timeoutId);
-            timeoutId = setTimeout(() => {
-                originalMethod.apply(this, args);
-            }, delay);
-        };
-
-        return descriptor;
-    };
-}
-
-class MyClass {
-    @Debounce(300) 
-    myMethod() {
-        console.log('Method called');
-    }
-}
-
-const myClassInstance  = new MyClass();
-myClassInstance.myMethod(1, 3); 
-myClassInstance.myMethod(2, 5);
+// const actions = new DebouncedActions();
+// actions.executeAfterDelay();
